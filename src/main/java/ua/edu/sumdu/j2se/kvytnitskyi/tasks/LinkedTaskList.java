@@ -49,7 +49,7 @@ public class LinkedTaskList {
 
     public Task getTask(int index) {
         if (index < 0 || index >= fill)
-            throw new IndexOutOfBoundsException("Invalid LinkedTaskList index parameter!");
+            throw new IndexOutOfBoundsException("Invalid index parameter!");
 
         index++;
         ListElement search = head;
