@@ -25,6 +25,9 @@ public class Task
      */
     public Task(String title, int time)
     {
+        if (time < 0)
+            throw new IllegalArgumentException("Negative time parameter!");
+
         this.title = title;
         this.time = time;
 
@@ -113,12 +116,13 @@ public class Task
      */
     public void setTime(int time)
     {
+        if (time < 0)
+            throw new IllegalArgumentException("Negative time parameter!");
+
         this.time = time;
 
         if(isRepeated)
-        {
             isRepeated = false;
-        }
     }
 
     /**
@@ -175,10 +179,11 @@ public class Task
      */
     public void setTime(int start, int end, int interval)
     {
+        if (start >= end || interval <= 0)
+            throw new IllegalArgumentException("Interval parameters error!");
+
         if (!isRepeated)
-        {
             this.isRepeated = true;
-        }
 
         this.start = start;
         this.end = end;
@@ -202,6 +207,8 @@ public class Task
      */
     public int nextTimeAfter(int current)
     {
+        if (current < 0)
+            throw new IllegalArgumentException("Negative time parameter!");
         if (active)
         {
             if (time != 0 && current < time)

@@ -7,13 +7,13 @@ public class ArrayTaskList
     private int fill;
     private Task[] tasks;
 
-    public ArrayTaskList ()
-    {
-        tasks = new Task[SIZE_ARRAY];
-    }
+    public ArrayTaskList () { tasks = new Task[SIZE_ARRAY]; }
 
     public void add (Task task)
     {
+        if (task == null)
+            throw new NullPointerException("Task object parameter has null value!");
+
         if (tasks.length == fill)
         {
             Task[] tempTasks = new Task[fill * 2];
@@ -26,6 +26,9 @@ public class ArrayTaskList
 
     public boolean remove (Task task)
     {
+        if (task == null)
+            throw new NullPointerException("Task object parameter has null value!");
+
         int i = 0;
 
         while ((tasks[i] != task) && (i != size()))
@@ -43,10 +46,19 @@ public class ArrayTaskList
 
     public int size () { return fill; }
 
-    public Task getTask (int index) { return tasks[index]; }
+    public Task getTask (int index)
+    {
+        if (index < 0 || index > fill)
+            throw new IndexOutOfBoundsException("Invalid ArrayTaskList index!");
+
+        return tasks[index];
+    }
 
     public ArrayTaskList incoming(int from, int to)
     {
+        if (from > to)
+            throw new IllegalArgumentException("Invalid interval parameters!");
+
         ArrayTaskList result = new ArrayTaskList();
         for (int i = 0; i < fill; i++)
         {
