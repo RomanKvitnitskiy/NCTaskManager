@@ -1,6 +1,6 @@
 package ua.edu.sumdu.j2se.kvytnitskyi.tasks;
 
-public class LinkedTaskList {
+public class LinkedTaskList extends AbstractTaskList {
 
     class ListElement {
         Task data; // data

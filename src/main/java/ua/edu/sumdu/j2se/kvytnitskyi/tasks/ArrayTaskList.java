@@ -1,6 +1,6 @@
 package ua.edu.sumdu.j2se.kvytnitskyi.tasks;
 
-public class ArrayTaskList
+public class ArrayTaskList extends AbstractTaskList
 {
     private static final int SIZE_ARRAY = 5;
 
